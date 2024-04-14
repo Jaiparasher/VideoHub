@@ -45,7 +45,6 @@ function Navbar() {
       <nav className="w-full h-[10vh] bg-[#393E46] flex justify-between items-center p-4 sm:gap-5 gap-2 border-b-2 border-gray-500 sticky top-0 z-50">
         <div className="flex items-center justify-center gap-2 cursor-pointer">
           <Logo />
-          <span className="font-bold text-white">YOUTUBE</span>
         </div>
 
         {/* search for large screens */}
@@ -91,7 +90,6 @@ function Navbar() {
             <div className="w-full border-b h-20 flex items-center mb-2 justify-between px-3">
               <div className="flex items-center gap-2">
                 <Logo />
-                <span className="text-lg font-bold">YOUTUBE</span>
               </div>
               <IoCloseCircleOutline
                 size={35}
@@ -113,14 +111,14 @@ function Navbar() {
                 ))}
               </div>
               {!authStatus && (
-                <div className="flex flex-col space-y-5 mb-3">
+                <div className="flex flex-col space-y-3 mb-3">
                   <Link to={"/login"}>
-                    <Button className="bg-[#14181d] font-semibold rounded hover:bg-[#FD7014] hover:text-white py-1 px-3">
+                    <Button className="bg-[#14181d] w-full font-semibold rounded hover:bg-[#FD7014] hover:text-white py-2 px-3">
                       Login
                     </Button>
                   </Link>
                   <Link to={"/signup"}>
-                    <Button className="bg-[#14181d] text-stone-950 font-semibold rounded hover:bg-[#FD7014] hover:text-black py-1 px-3">
+                    <Button className="bg-[#14181d] w-full text-stone-950 font-semibold rounded hover:bg-[#FD7014] hover:text-black py-2 px-3">
                       Sign up
                     </Button>
                   </Link>

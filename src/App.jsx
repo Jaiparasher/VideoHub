@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import { Toaster } from "react-hot-toast";
 import Login from "./components/Login";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "./store/AuthSlice";
+import { getCurrentUser } from "./store/Slices/authSlice";
 import MyChannel from "./pages/MyChannel/MyChannel";
 import MyChannelVideos from "./pages/MyChannel/MyChannelVideos";
 

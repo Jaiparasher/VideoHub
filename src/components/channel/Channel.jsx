@@ -9,6 +9,7 @@ function Channel({
     fullName,
     subscribersCount,
     subscribedCount,
+    children
 }) {
     return (
         <>
@@ -38,10 +39,10 @@ function Channel({
                             </h3>
                             <div className="flex gap-1">
                                 <p className="text-xs text-slate-400">
-                                    {subscribersCount} subscribers
+                                    {subscribersCount} Subscribers
                                 </p>
                                 <p className="text-xs text-slate-400">
-                                    {subscribedCount} subscribed
+                                    {subscribedCount} Subscribed
                                 </p>
                             </div>
                         </div>
@@ -95,6 +96,7 @@ function Channel({
                         <p className="p-2">Subscribed</p>
                     </NavLink>
                 </section>
+                <section>{children}</section>
             </div>
         </>
     );

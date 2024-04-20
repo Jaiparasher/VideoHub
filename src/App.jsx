@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
 import { Toaster } from "react-hot-toast";
-import Login from "./components/Login";
+import {Login, SignUp} from "./components/index";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./store/Slices/authSlice";
 import MyChannel from "./pages/MyChannel/MyChannel";
@@ -29,6 +29,7 @@ function App() {
                     </Route>
                 </Route>
                 <Route path="/login" element={<Login />}/>
+                <Route path="/signup" element={<SignUp />}/>
             </Routes>
             <Toaster
                 position="top-right"

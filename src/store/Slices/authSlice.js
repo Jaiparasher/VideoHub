@@ -11,9 +11,16 @@ const initialState = {
 };
 
 export const createAccount = createAsyncThunk("register", async (data) => {
+    const formData = new FormData();
+    formData.append("avatar", data.avatar[0]);
+    formData.append("username", data.username);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("fullName", data.fullName);
     try {
-        const response = await axiosInstance.post("/users/register", data);
+        const response = await axiosInstance.post("/users/register", formData);
         console.log(response.data);
+        toast.success("Registered successfully!!!");
         return response.data;
     } catch (error) {
         toast.error(error?.response?.data?.error);
@@ -78,6 +85,12 @@ const authSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+        builder.addCase(createAccount.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(createAccount.fulfilled, (state) => {
+            state.loading = false;
+        });
         builder.addCase(userLogin.pending, (state) => {
             state.loading = true;
         });

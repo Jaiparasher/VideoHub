@@ -12,7 +12,6 @@ export const toggleVideoLike = createAsyncThunk(
     async (videoId) => {
         try {
             const response = await axiosInstance.post(`/likes/toggle/v/${videoId}`);
-            console.log(response.data.data);
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -26,7 +25,6 @@ export const toggleTweetLike = createAsyncThunk(
     async (tweetId) => {
         try {
             const response = await axiosInstance.post(`/likes/toggle/t/${tweetId}`);
-            console.log(response.data.data);
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -40,7 +38,6 @@ export const toggleCommentLike = createAsyncThunk(
     async (commentId) => {
         try {
             const response = await axiosInstance.post(`/likes/toggle/c/${commentId}`);
-            console.log(response.data.data);
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -54,7 +51,6 @@ export const getLikedVideos = createAsyncThunk(
     async () => {
         try {
             const response = await axiosInstance.post('likes/videos');
-            console.log(response.data.data);
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);

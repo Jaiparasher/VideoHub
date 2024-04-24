@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "../index";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toggleSubscription } from "../../store/Slices/subscriptionSlice";
 
 function ChannelHeader({
   coverImage,
@@ -16,7 +17,20 @@ function ChannelHeader({
     setToggleSubscribe(true);
   }
 
-  useEffect(() => {}, [toggleSubscribe]);
+  const [localIsSubscribed, setLocalIsSubscribed] = useState(isSubscribed);
+    const [localSubscribersCount, setLocalSubscribersCount] =
+        useState(subscribersCount);
+    const dispatch = useDispatch();
+
+    const handleSubscribe = () => {
+        dispatch(toggleSubscription(channelId));
+        setLocalIsSubscribed((prev) => !prev);
+        if (localIsSubscribed) {
+            setLocalSubscribersCount((prev) => prev - 1);
+        } else {
+            setLocalSubscribersCount((prev) => prev + 1);
+        }
+    };
 
   return (
     <>
@@ -51,15 +65,13 @@ function ChannelHeader({
                   {subscribersCount} Subscribers
                 </p>
                 <p className="text-xs text-slate-400">
-                  {subscribedCount} Subscribed
+                  {localSubscribersCount} Subscribed
                 </p>
               </div>
             </div>
-            <div onClick={() => setToggleSubscribe((prev) => !prev)}>
-              <Button className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500">
-                {toggleSubscribe ? "Subscribed" : "Subscribe"}
+              <Button onClick={handleSubscribe} className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500">
+                {localIsSubscribed ? "Subscribed" : "Subscribe"}
               </Button>
-            </div>
           </div>
         </section>
       </div>

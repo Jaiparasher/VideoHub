@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { timeAgo } from "../helpers/timeAgo";
-import { useSelector } from "react-redux";
-import Like from "./Like";
-import { HiOutlineDotsVertical } from "../components/icons";
-import { useDispatch } from "react-redux";
 import { deleteAComment, editAComment } from "../store/Slices/commentSlice";
-import DeleteConfirmation from "./DeleteConfirmation";
-import EditComment from "./Edit";
 import { useSelector, useDispatch } from "react-redux";
 import { Like, DeleteConfirmation, Edit } from "./index";
 import { HiOutlineDotsVertical } from "./icons";

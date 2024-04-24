@@ -18,5 +18,28 @@ import DeleteConfirmation from "./DeleteConfirmation";
 import Like from "./Like";
 import Description from "./Description";
 import TweetList from "./TweetList";
+import Avatar from "./Avatar";
 
-export { Button, Container, Input, Login, Navbar, Search, Sidebar, Logo, ChannelHeader, VideoList, SignUp, TweetAndComment, Video, CommentList, Edit, DeleteConfirmation, Like, Description, TweetList, ChannelNavigate };
+export {
+    Button,
+    Container,
+    Input,
+    Login,
+    Navbar,
+    Search,
+    Sidebar,
+    Logo,
+    ChannelHeader,
+    VideoList,
+    SignUp,
+    TweetAndComment,
+    Video,
+    CommentList,
+    Edit,
+    DeleteConfirmation,
+    Like,
+    Description,
+    TweetList,
+    ChannelNavigate,
+    Avatar
+};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiSolidLike, BiSolidDislike } from "../components/icons";
+import { BiSolidLike, BiSolidDislike } from "./icons";
 import { toggleTweetLike } from "../store/Slices/likeSlice";
 import { timeAgo } from "../helpers/timeAgo";
 import { useSelector } from "react-redux";

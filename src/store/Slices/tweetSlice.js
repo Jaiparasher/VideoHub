@@ -24,9 +24,9 @@ export const editTweet = createAsyncThunk(
         try {
             const response = await axiosInstance.patch(
                 `/tweet/${tweetId}`,
-                content
+                {content}
             );
-            console.log(response.data.data);
+            toast.success(response.data.message);
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -38,8 +38,8 @@ export const editTweet = createAsyncThunk(
 export const deleteTweet = createAsyncThunk("deleteTweet", async (tweetId) => {
     try {
         const response = await axiosInstance.delete(`/tweet/${tweetId}`);
-        console.log(response.data.data);
-        return response.data.data;
+        toast.success(response.data.message);
+        return response.data.data.tweetId;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -74,6 +74,9 @@ const tweetSlice = createSlice({
         });
         builder.addCase(createTweet.fulfilled, (state, action) => {
             state.tweets.unshift(action.payload);
+        })
+        builder.addCase(deleteTweet.fulfilled, (state, action) => {
+            state.tweets = state.tweets.filter((tweet) => tweet._id !== action.payload);
         })
     },
 });

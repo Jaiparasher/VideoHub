@@ -15,7 +15,10 @@ function UploadingVideo({
     const dispatch = useDispatch();
 
     const handleCancelAndFinish = () => {
-        setUploadVideoPopup((prev) => !prev);
+        setUploadVideoPopup((prev) => ({
+            ...prev,
+            uploadVideo: false,
+        }));
         dispatch(updateUploadState());
     };
     return (
@@ -39,7 +42,10 @@ function UploadingVideo({
                     <IoCloseCircleOutline
                         size={25}
                         className="cursor-pointer"
-                        onClick={() => setUploadVideoPopup((prev) => !prev)}
+                        onClick={() => setUploadVideoPopup((prev) => ({
+                            ...prev,
+                            uploadVideo: false
+                        }))}
                     />
                 </div>
                 <div className="border flex justify-start items-center p-1">

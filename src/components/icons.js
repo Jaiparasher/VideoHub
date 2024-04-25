@@ -12,6 +12,7 @@ import { RiHome6Line } from "react-icons/ri";
 import { BiSolidLike } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { TiTick } from "react-icons/ti";
 
 export {
     IoCloseCircleOutline,
@@ -27,5 +28,6 @@ export {
     TbUserCheck,
     BiSolidLike,
     BiSolidDislike,
-    HiOutlineDotsVertical
+    HiOutlineDotsVertical,
+    TiTick
 }

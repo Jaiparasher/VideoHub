@@ -5,9 +5,10 @@ import { BASE_URL } from "../../constants";
 
 const initialState = {
     loading: false,
-    uploading: true,
+    uploading: false,
+    uploaded: false,
     isPublished: null,
-    video: null
+    videos: null,
 };
 
 export const getAllVideos = createAsyncThunk(
@@ -103,7 +104,12 @@ export const togglePublishStatus = createAsyncThunk("togglePublishStatus", async
 const videoSlice = createSlice({
     name: "video",
     initialState,
-    reducers: {},
+    reducers: {
+        updateUploadState: (state) => {
+            state.uploading = false;
+            state.uploaded = false;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(getAllVideos.pending, (state) => {
             state.loading = true;
@@ -117,7 +123,7 @@ const videoSlice = createSlice({
             state.uploading = true;
         });
         builder.addCase(publishAvideo.fulfilled, (state) => {
-            state.loading = false;
+            state.uploaded = true;
             state.uploading = false;
         });
         builder.addCase(updateAVideo.pending, (state) => {
@@ -144,5 +150,7 @@ const videoSlice = createSlice({
         });
     },
 });
+
+export const { updateUploadState } = videoSlice.actions;
 
 export default videoSlice.reducer;

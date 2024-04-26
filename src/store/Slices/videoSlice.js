@@ -81,7 +81,7 @@ export const deleteAVideo = createAsyncThunk("deleteAVideo", async(videoId) => {
     }
 });
 
-export const getVideoById = createAsyncThunk("getVideoById", async(videoId) => {
+export const getVideoById = createAsyncThunk("getVideoById", async({videoId}) => {
     try {
         const response = await axiosInstance.get(`/video/v/${videoId}`);
         return response.data.data;

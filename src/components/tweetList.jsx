@@ -133,16 +133,16 @@ function TweetList({
                     {/* deleteing the tweet */}
                     {editState.delete && (
                         <div className="absolute z-50">
-                            <DeleteConfirmation
-                                tweet={true}
-                                onCancel={() =>
-                                    setEditState((prevState) => ({
-                                        ...prevState,
-                                        delete: !prevState.delete,
-                                    }))
-                                }
-                                onDelete={handleDeleteTweet}
-                            />
+                        <DeleteConfirmation
+                            tweet={true}
+                            onCancel={() =>
+                                setEditState((prevState) => ({
+                                    ...prevState,
+                                    delete: !prevState.delete,
+                                }))
+                            }
+                            onDelete={handleDeleteTweet}
+                        />
                         </div>
                     )}
                 </div>

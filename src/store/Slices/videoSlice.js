@@ -128,11 +128,9 @@ const videoSlice = createSlice({
             state.uploading = false;
         });
         builder.addCase(updateAVideo.pending, (state) => {
-            state.loading = true;
             state.uploading = true;
         });
         builder.addCase(updateAVideo.fulfilled, (state) => {
-            state.loading = false;
             state.uploading = false;
             state.uploaded = true;
         });

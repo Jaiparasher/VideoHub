@@ -8,7 +8,7 @@ import { Like, DeleteConfirmation, Edit } from "./index";
 import { HiOutlineDotsVertical } from "./icons";
 import { deleteTweet, editTweet } from "../store/Slices/tweetSlice";
 
-function TweetList({
+function TweetsList({
     tweetId,
     avatar,
     username,
@@ -151,4 +151,4 @@ function TweetList({
     );
 }
 
-export default TweetList;
+export default TweetsList;

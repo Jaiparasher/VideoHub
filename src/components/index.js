@@ -17,7 +17,6 @@ import Edit from "./Edit";
 import DeleteConfirmation from "./DeleteConfirmation";
 import Like from "./Like";
 import Description from "./Description";
-import TweetList from "./TweetList";
 import Avatar from "./Avatar";
 import NoVideosFound from "./NoVideosFound";
 import Input2 from "./Input2";
@@ -33,6 +32,7 @@ import EditPersonalInfo from "./EditPersonalInfo";
 import ChangePassword from "./ChangePassword";
 import Layout from "../Layout";
 import EditAvatar from "./EditAvatar";
+import TweetsList from './TweetsList';
 
 export {
     Button,
@@ -53,7 +53,7 @@ export {
     DeleteConfirmation,
     Like,
     Description,
-    TweetList,
+    TweetsList,
     ChannelNavigate,
     Avatar,
     NoVideosFound,

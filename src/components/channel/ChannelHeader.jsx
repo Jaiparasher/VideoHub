@@ -87,8 +87,9 @@ function ChannelHeader({
                     `${localSubscribersCount} Subscribers`}
                 </p>
                 <p className="text-xs text-slate-400">
-                {subscribedCount && `${subscribedCount}`}{" "}
-                Subscribed
+                {subscribedCount && `${subscribedCount}`}
+                
+                {" Subscribed"}
                 </p>
               </div>
             </div>

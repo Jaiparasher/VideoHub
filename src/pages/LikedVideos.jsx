@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLikedVideos } from "../store/Slices/likeSlice";
 import HomeSkeleton from "../skeleton/HomeSkeleton";
-import { Link } from "react-router-dom";
 import { Container, NoVideosFound, VideoList } from "../components";
+import { makeVideosNull } from "../store/Slices/videoSlice";
 
 function LikedVideos() {
     const dispatch = useDispatch();
@@ -13,6 +13,8 @@ function LikedVideos() {
 
     useEffect(() => {
         dispatch(getLikedVideos());
+
+        return () => dispatch(makeVideosNull())
     }, [dispatch]);
 
     if (loading) {
@@ -25,7 +27,7 @@ function LikedVideos() {
     return (
         <>
            <Container>
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 text-white mb-20 sm:mb-0">
+                <div className="grid max-h-screen overflow-y-scroll lg:grid-cols-3 sm:grid-cols-2 text-white mb-20 sm:mb-0">
                     {likedVideos?.map((video) => (
                         <VideoList
                             key={video.likedVideo._id}

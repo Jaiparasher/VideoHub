@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NoVideosFound, VideoList } from "../components";
 import HomeSkeleton from "../skeleton/HomeSkeleton";
-import { makeVideosNull } from "../store/Slices/videoSlice";
 import { getAllVideos, makeVideosNull } from "../store/Slices/videoSlice";
 import { FaFilter } from "react-icons/fa";
 import { IoCloseCircleOutline } from "react-icons/io5";

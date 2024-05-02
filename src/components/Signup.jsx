@@ -6,7 +6,6 @@ import { createAccount, userLogin } from "../store/Slices/authSlice.js";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginSkeleton from "../skeleton/loginSkeleton.jsx";
-import { FaCamera } from "react-icons/fa";
 import GetImagePreview from "./GetImagePreview.jsx";
 
 function SignUp() {
@@ -19,26 +18,8 @@ function SignUp() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.auth?.loading);
-    const [avatarPreview, setAvatarPreview] = useState(null);
-    const [coverPreview, setCoverPreview] = useState(null);
-
-    const handleAvatarChange = (e) => {
-        const files = e.target.files;
-        if (files) {
-            setAvatarPreview(URL.createObjectURL(files[0]));
-        }
-        return files;
-    };
-    const handleCoverChange = (e) => {
-        const files = e.target.files;
-        if (files) {
-            setCoverPreview(URL.createObjectURL(files[0]));
-        }
-        return files;
-    };
 
     const submit = async (data) => {
-        console.log(data);
         const response = await dispatch(createAccount(data));
         if (response?.payload?.success) {
             const username = data?.username;
@@ -62,7 +43,7 @@ function SignUp() {
     return (
         <>
             <div className="w-full h-screen text-white p-3 flex justify-center items-start sm:mt-8">
-            <div className="flex flex-col space-y-2 justify-center items-center border border-slate-600 p-3">
+                <div className="flex flex-col space-y-2 justify-center items-center border border-slate-600 p-3">
                     <div className="flex items-center gap-2">
                         <Logo />
                     </div>
@@ -70,7 +51,7 @@ function SignUp() {
                         onSubmit={handleSubmit(submit)}
                         className="space-y-4 p-2 text-sm sm:w-96 w-full"
                     >
-                    <div className="w-full relative h-28 bg-[#222222]">
+                        <div className="w-full relative h-28 bg-[#222222]">
                             <div className="w-full h-full">
                                 <GetImagePreview
                                     name="coverImage"
@@ -81,7 +62,7 @@ function SignUp() {
                                 <div className="text-sm absolute right-2 bottom-2 hover:text-purple-500 cursor-default">
                                     cover Image
                                 </div>
-                                </div>
+                            </div>
                             <div className="absolute left-2 bottom-2 rounded-full border-2">
                                 <GetImagePreview
                                     name="avatar"
@@ -90,6 +71,8 @@ function SignUp() {
                                     cameraIcon={true}
                                     cameraSize={20}
                                 />
+                            </div>
+
                             {/* <label
                                 htmlFor="avatar"
                                 className="cursor-pointer"
@@ -156,12 +139,13 @@ function SignUp() {
                             </span>
                         )}
                         <Input
-                            label="FullName: "
+                            label="Fullname: "
                             type="text"
-                            placeholder=""
+                            placeholder="Enter fullname"
                             {...register("fullName", {
                                 required: "fullName is required",
                             })}
+                            className="h-8"
                         />
                         {errors.fullName && (
                             <span className="text-red-500">
@@ -180,20 +164,6 @@ function SignUp() {
                         {errors.password && (
                             <span className="text-red-500">
                                 {errors.password.message}
-                            </span>
-                        )}
-                        <Input
-                            label="Profile Picture: "
-                            type="file"
-                            placeholder=""
-                            {...register("avatar", {
-                                required: "avatar is required",
-                            })}
-                            accept="image/png, image/jpeg"
-                        />
-                        {errors.password && (
-                            <span className="text-red-500">
-                                {errors.avatar.message}
                             </span>
                         )}
 

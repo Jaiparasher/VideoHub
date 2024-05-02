@@ -15,6 +15,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
   const authStatus = useSelector((state) => state.auth.status);
   const username = useSelector((state) => state.auth?.userData?.username);
   const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
@@ -56,8 +57,13 @@ function Navbar() {
 
         {/* search for small screens */}
         <div className="text-white w-full inline-flex justify-end sm:hidden pr-4">
-          <CiSearch size={30} fontWeight={"bold"} />
-          <SearchForSmallScreen />
+          <CiSearch size={30} fontWeight={"bold"} onClick={() => setOpenSearch((prev) => !prev)}/>
+          {openSearch && (
+                        <SearchForSmallScreen
+                            open={openSearch}
+                            setOpenSearch={setOpenSearch}
+                        />
+          )}
         </div>
 
         {/* login and signup buttons */}

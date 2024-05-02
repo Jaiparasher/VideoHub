@@ -54,7 +54,10 @@ function ChannelHeader({
               />
               {edit && (
                 <div className="absolute inset-0 flex justify-center items-center">
-                  <EditAvatar cover={true} />
+                <EditAvatar
+                                        cover={true}
+                                        preImage={coverImage}
+                                    />
                 </div>
               )}
             </div>
@@ -72,7 +75,7 @@ function ChannelHeader({
               />
               {edit && (
                 <div className="absolute inset-0 flex justify-center items-start">
-                  <EditAvatar />
+                  <EditAvatar preImage={avatar} />
                 </div>
               )}
             </div>

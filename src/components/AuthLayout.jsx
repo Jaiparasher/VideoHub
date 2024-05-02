@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { LoginPopup } from "../components";
 import { useNavigate } from "react-router-dom";
+import LoginPopup from './LoginPopup';
 
 function AuthLayout({ children, authentication }) {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ function AuthLayout({ children, authentication }) {
     }, [authStatus, authentication, navigate]);
 
     if (authentication && authStatus !== authentication) {
-        return <LoginPopup />;
+        return <LoginPopup/>;
     }
 
     return children;

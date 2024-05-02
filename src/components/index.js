@@ -33,6 +33,7 @@ import ChangePassword from "./ChangePassword";
 import Layout from "../Layout";
 import EditAvatar from "./EditAvatar";
 import TweetsList from './TweetsList';
+import AuthLayout from './AuthLayout';
 
 export {
     Button,
@@ -70,4 +71,5 @@ export {
     EditPersonalInfo,
     Layout,
     EditAvatar,
+    AuthLayout
 };

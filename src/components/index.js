@@ -34,7 +34,8 @@ import Layout from "../Layout";
 import EditAvatar from "./EditAvatar";
 import TweetsList from './TweetsList';
 import AuthLayout from './AuthLayout';
-import InfiniteScroll from "./InfiniteScroll"
+import InfiniteScroll from "./InfiniteScroll";
+import SearchForSmallScreen from "./SearchForSmallScreen";
 
 export {
     Button,
@@ -73,5 +74,6 @@ export {
     Layout,
     EditAvatar,
     AuthLayout,
-    InfiniteScroll
+    InfiniteScroll,
+    SearchForSmallScreen
 };

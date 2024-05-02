@@ -57,9 +57,10 @@ function Navbar() {
         {/* search for small screens */}
         <div className="text-white w-full inline-flex justify-end sm:hidden pr-4">
           <CiSearch size={30} fontWeight={"bold"} />
+          <SearchForSmallScreen />
         </div>
 
-        {/* login and signup buutons */}
+        {/* login and signup buttons */}
         {authStatus ? (
           <div className="rounded-full sm:block hidden">
             <img src={profileImg} alt="profileImg" className="rounded-full w-10 h-10 object-cover" />

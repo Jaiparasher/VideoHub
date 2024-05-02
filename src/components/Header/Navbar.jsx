@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, Button, Logo } from "../index.js";
+import { Search, Button, Logo, SearchForSmallScreen } from "../index.js";
 import { Link } from "react-router-dom";
 import {
   IoCloseCircleOutline,

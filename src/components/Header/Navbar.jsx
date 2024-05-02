@@ -5,13 +5,13 @@ import {
   IoCloseCircleOutline,
   BiLike,
   CiSearch,
-  CiSettings,
   HiOutlineVideoCamera,
-  MdOutlineContactSupport,
   SlMenu,
 } from "../icons.js";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
+import { userLogout } from "../../store/Slices/authSlice.js";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -19,6 +19,13 @@ function Navbar() {
   const authStatus = useSelector((state) => state.auth.status);
   const username = useSelector((state) => state.auth?.userData?.username);
   const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    await dispatch(userLogout());
+    navigate("/");
+  };
 
   const sidePanelItems = [
     {
@@ -30,16 +37,6 @@ function Navbar() {
       icon: <HiOutlineVideoCamera size={25} />,
       title: "My Content",
       url: `/channel/${username}`,
-    },
-    {
-      icon: <MdOutlineContactSupport size={25} />,
-      title: "Support",
-      url: "/support",
-    },
-    {
-      icon: <CiSettings size={25} />,
-      title: "Settings",
-      url: "/settings",
     },
   ];
 
@@ -57,19 +54,27 @@ function Navbar() {
 
         {/* search for small screens */}
         <div className="text-white w-full inline-flex justify-end sm:hidden pr-4">
-          <CiSearch size={30} fontWeight={"bold"} onClick={() => setOpenSearch((prev) => !prev)}/>
+          <CiSearch
+            size={30}
+            fontWeight={"bold"}
+            onClick={() => setOpenSearch((prev) => !prev)}
+          />
           {openSearch && (
-                        <SearchForSmallScreen
-                            open={openSearch}
-                            setOpenSearch={setOpenSearch}
-                        />
+            <SearchForSmallScreen
+              open={openSearch}
+              setOpenSearch={setOpenSearch}
+            />
           )}
         </div>
 
         {/* login and signup buttons */}
         {authStatus ? (
           <div className="rounded-full sm:block hidden">
-            <img src={profileImg} alt="profileImg" className="rounded-full w-10 h-10 object-cover" />
+            <img
+              src={profileImg}
+              alt="profileImg"
+              className="rounded-full w-10 h-10 object-cover"
+            />
           </div>
         ) : (
           <div className="space-x-2 sm:block hidden">
@@ -124,7 +129,7 @@ function Navbar() {
                   </NavLink>
                 ))}
               </div>
-              {!authStatus && (
+              {!authStatus ? (
                 <div className="flex flex-col space-y-3 mb-3">
                   <Link to={"/login"}>
                     <Button className="bg-[#14181d] w-full font-semibold rounded hover:bg-[#FD7014] hover:text-white py-2 px-3">
@@ -137,6 +142,14 @@ function Navbar() {
                     </Button>
                   </Link>
                 </div>
+              ): (
+                <div
+                                    className="flex gap-2 justify-start items-start cursor-pointer py-1 px-2 border border-slate-600"
+                                    onClick={() => logout()}
+                                >
+                                    <IoMdLogOut size={25} />
+                                    <span className="text-base">Logout</span>
+                                </div>
               )}
             </div>
           </div>

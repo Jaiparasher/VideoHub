@@ -14,8 +14,8 @@ function CommentsList({
     isLiked,
     likesCount,
 }) {
-    const avatar2 = useSelector((state) => state.auth?.userData?.avatar.url);
-    const authUsername = useSelector((state) => state.auth?.userData?.username);
+    const avatar2 = useSelector((state) => state.auth?.userData?.data?.avatar.url);
+    const authUsername = useSelector((state) => state.auth?.userData?.data?.username);
     const dispatch = useDispatch();
 
     const [editState, setEditState] = useState({
@@ -46,7 +46,7 @@ function CommentsList({
     };
     return (
         <>
-            <div className="text-white w-full flex borde justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
+            <div className="text-white w-full flex border justify-start items-center sm:gap-5 gap-3 border-b border-slate-600 p-3 sm:p-5">
                 <div className="w-12">
                     <img
                         src={avatar || avatar2}

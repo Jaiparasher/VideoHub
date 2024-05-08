@@ -44,7 +44,7 @@ function Like({ isLiked, likesCount = 0, tweetId, commentId, videoId, size }) {
                     size={size}
                     onClick={handleLikeToggle}
                     className={`cursor-pointer ${
-                        localIsLiked ? "text-purple-500" : ""
+                        localIsLiked ? "text-[#FD7014]" : ""
                     }`}
                 />
                 <span className="text-xs mr-3">{localLikesCount}</span>

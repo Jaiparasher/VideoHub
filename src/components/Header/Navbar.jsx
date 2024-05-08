@@ -17,8 +17,8 @@ function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const authStatus = useSelector((state) => state.auth.status);
-  const username = useSelector((state) => state.auth?.userData?.username);
-  const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
+  const username = useSelector((state) => state.auth?.userData?.data?.username);
+  const profileImg = useSelector((state) => state.auth.userData?.data?.avatar.url);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

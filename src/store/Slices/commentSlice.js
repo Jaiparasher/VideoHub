@@ -12,7 +12,7 @@ const initialState = {
 
 export const createAComment = createAsyncThunk("createAComment", async ({videoId, content}) => {
     try {
-        const response = await axiosInstance.post(`/comment/${videoId}`, content);
+        const response = await axiosInstance.post(`/comment/${videoId}`, {content});
         return response.data.data;
     } catch (error) {
         toast.error(error?.response?.data?.error);
@@ -51,7 +51,7 @@ export const deleteAComment = createAsyncThunk("deleteAComment", async (commentI
 export const getVideoComments = createAsyncThunk(
     "getVideoComments",
     async ({videoId, page, limit}) => {
-        const url = new URL(`${BASE_URL}/${videoId}`);
+        const url = new URL(`${BASE_URL}/comment/${videoId}`);
         if(page) url.searchParams.set('page', page);
         if(limit) url.searchParams.set('limit', limit);
 

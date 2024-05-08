@@ -3,6 +3,8 @@ import { ImBin, GrEdit } from "../../components/icons";
 import TogglePublish from "../TogglePublish";
 
 function VideoTable({ videos, setPopUp, setVideoDetails }) {
+    
+
     return (
         <>
             <section className="mx-auto w-full overflow-x-scroll">
@@ -64,7 +66,7 @@ function VideoTable({ videos, setPopUp, setVideoDetails }) {
                                     <span className="flex gap-3 justify-start">
                                         <ImBin
                                             size={20}
-                                            className="cursor-pointer hover:text-purple-500"
+                                            className="cursor-pointer hover:text-[#FD7014]"
                                             onClick={() => {
                                                 setPopUp((prev) => ({
                                                     ...prev,
@@ -76,7 +78,7 @@ function VideoTable({ videos, setPopUp, setVideoDetails }) {
                                         />
                                         <GrEdit
                                             size={20}
-                                            className="cursor-pointer hover:text-purple-500"
+                                            className="cursor-pointer hover:text-[#FD7014]"
                                             onClick={() => {
                                                 setPopUp((prev) => ({
                                                     ...prev,

@@ -17,8 +17,8 @@ function TweetsList({
     likesCount=0,
     isLiked
 }) {
-    const avatar2 = useSelector((state) => state.user?.profileData?.avatar.url);
-    const authUsername = useSelector((state) => state.auth?.userData?.username);
+    const avatar2 = useSelector((state) => state.user?.profileData?.data?.avatar.url);
+    const authUsername = useSelector((state) => state.auth?.userData?.data?.username);
     const dispatch = useDispatch();
 
     const [editState, setEditState] = useState({

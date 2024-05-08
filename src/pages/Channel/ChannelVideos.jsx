@@ -38,7 +38,7 @@ function ChannelVideos() {
                     }}
                     className={`group py-1 px-2 rounded-md ${
                         activeButton === "button1"
-                            ? "bg-purple-500"
+                            ? "bg-[#FD7014]"
                             : "bg-[#222222]"
                     }`}
                 >
@@ -51,7 +51,7 @@ function ChannelVideos() {
                     }}
                     className={`group py-1 px-2 rounded-md ${
                         activeButton === "button2"
-                            ? "bg-purple-500"
+                            ? "bg-[#FD7014]"
                             : "bg-[#222222]"
                     }`}
                 >
@@ -64,7 +64,7 @@ function ChannelVideos() {
                     }}
                     className={`group py-1 px-2 rounded-md ${
                         activeButton === "button3"
-                            ? "bg-purple-500"
+                            ? "bg-[#FD7014]"
                             : "bg-[#222222]"
                     }`}
                 >

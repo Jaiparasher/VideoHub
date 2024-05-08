@@ -82,7 +82,7 @@ function EditPersonalInfo() {
                             </Button>
                             <Button
                                 type="submit"
-                                className="bg-purple-500 text-white px-4 py-2 rounded"
+                                className="bg-[#FD7014] text-white px-4 py-2 rounded"
                             >
                                 Save Changes
                             </Button>

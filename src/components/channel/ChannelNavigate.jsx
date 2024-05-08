@@ -10,7 +10,7 @@ function ChannelNavigate({ username, edit }) {
                         to={`/edit/personalInfo`}
                         className={({ isActive }) =>
                             isActive
-                                ? "bg-white text-purple-600 border-b-2 border-purple-600"
+                                ? "bg-white text-[#FD7014] border-b-2 border-[#FD7014]"
                                 : ""
                         }
                     >
@@ -20,7 +20,7 @@ function ChannelNavigate({ username, edit }) {
                         to={`/edit/password`}
                         className={({ isActive }) =>
                             isActive
-                                ? "bg-white text-purple-600 border-b-2 border-purple-600"
+                                ? "bg-white text-[#FD7014] border-b-2 border-[#FD7014]"
                                 : ""
                         }
                     >
@@ -38,7 +38,7 @@ function ChannelNavigate({ username, edit }) {
                     to={`/channel/${username}/videos`}
                     className={({ isActive }) =>
                         isActive
-                            ? "bg-white text-purple-600 border-b-2 border-purple-600"
+                            ? "bg-white text-[#FD7014] border-b-2 px-2 rounded-t-md border-[#FD7014]"
                             : ""
                     }
                 >
@@ -48,8 +48,8 @@ function ChannelNavigate({ username, edit }) {
                     to={`/channel/${username}/playlists`}
                     className={({ isActive }) =>
                         isActive
-                            ? "bg-white text-purple-600 border-b-2 border-purple-600"
-                            : ""
+                            ? "bg-white text-[#FD7014] border-b-2 px-2 rounded-t-md border-[#FD7014]"
+                            : "" 
                     }
                 >
                     <p className="p-2">Playlists</p>
@@ -58,7 +58,7 @@ function ChannelNavigate({ username, edit }) {
                     to={`/channel/${username}/tweets`}
                     className={({ isActive }) =>
                         isActive
-                            ? "bg-white text-purple-600 border-b-2 border-purple-600"
+                            ? "bg-white text-[#FD7014] border-b-2 px-2 rounded-t-md border-[#FD7014]"
                             : ""
                     }
                 >
@@ -68,7 +68,7 @@ function ChannelNavigate({ username, edit }) {
                     to={`/channel/${username}/subscribed`}
                     className={({ isActive }) =>
                         isActive
-                            ? "bg-white text-purple-600 border-b-2 border-purple-600"
+                            ? "bg-white text-[#FD7014] border-b-2 px-2 rounded-t-md border-[#FD7014]"
                             : ""
                     }
                 >

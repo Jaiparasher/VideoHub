@@ -8,6 +8,7 @@ import { makeVideosNull } from "../store/Slices/videoSlice";
 function LikedVideos() {
     const dispatch = useDispatch();
     const likedVideos = useSelector((state) => state.like?.likedVideos);
+    console.log(likedVideos);
     const loading = useSelector((state) => state.like.loading);
     window.scrollTo(0, 0);
 

@@ -15,9 +15,10 @@ import { getChannelStats, getChannelVideos } from "../store/Slices/dashboardSlic
 import { deleteAVideo } from "../store/Slices/videoSlice";
 
 function AdminDashboard() {
-    const username = useSelector((state) => state.auth.userData?.username);
+    const username = useSelector((state) => state.auth.userData?.data?.username);
     const dashboard = useSelector((state) => state.dashboard.channelStats);
     const videos = useSelector((state) => state.dashboard.channelVideos);
+    console.log(videos);
     const uploaded = useSelector((state) => state.video.uploaded);
     const publishToggled = useSelector((state) => state.video.publishToggled);
     const deleting = useSelector((state) => state.video.loading);
@@ -106,7 +107,7 @@ function AdminDashboard() {
 
                     {/* Table for managing channel videos */}
                     <VideoTable
-                        videos={videos}
+                        videos={videos.allVideos}
                         setPopUp={setPopUp}
                         setVideoDetails={setVideoDetails}
                     />

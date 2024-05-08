@@ -17,7 +17,7 @@ import { userLogout } from "../../store/Slices/authSlice";
 function Sidebar() {
   const dispatch = useDispatch();
     const navigate = useNavigate();
-  const username = useSelector((state) => state.auth?.userData?.username);
+  const username = useSelector((state) => state.auth?.userData?.data?.username);
   const sidebarTopItems = [
     {
       icon: <RiHome6Line size={25} />,
@@ -81,7 +81,7 @@ function Sidebar() {
   return (
     <>
       <div className="sm:block hidden">
-        <div className="text-white lg:w-56 md:w-44 w-16 sm:p-3 p-2 border-slate-600 border-r h-screen flex flex-col justify-between">
+        <div className="text-white h-[90vh] lg:w-56 md:w-44 w-16 sm:p-3 p-2 border-slate-600 border-r  flex flex-col justify-between">
           <div className="flex flex-col gap-4 mt-5">
             {sidebarTopItems.map((item) => (
               <NavLink
@@ -104,7 +104,7 @@ function Sidebar() {
           <div className="space-y-4 mb-10">
           {username && (
                             <div
-                                className="flex items-center gap-2 justify-center sm:justify-start hover:bg-purple-500 cursor-pointer py-1 px-2 border border-slate-600"
+                                className="flex items-center gap-2 justify-center sm:justify-start hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600"
                                 onClick={() => logout()}
                             >
                                 <IoMdLogOut size={25} />

@@ -40,7 +40,7 @@ function ChannelSubscribers() {
                         </div>
                     </div>
                     <div>
-                        <Button className="bg-purple-500 text-black text-xs py-1 px-2">
+                        <Button className="bg-[#FD7014] text-black text-xs py-1 px-2">
                             {subscriber?.subscriber?.subscribedToSubscriber
                                 ? "Subscribed"
                                 : "subscribe"}

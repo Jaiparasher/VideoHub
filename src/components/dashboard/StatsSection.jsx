@@ -12,7 +12,7 @@ function StatsSection({ dashboard }) {
             <section className="grid sm:grid-cols-4 grid-cols-2 justify-evenly items-center gap-2">
                 <div className="border border-slate-500 sm:p-3 p-2">
                     <MdOutlineSlowMotionVideo
-                        className="text-purple-500 mb-2"
+                        className="text-[#FD7014] mb-2"
                         size={30}
                     />
                     <p>Total Videos</p>
@@ -22,7 +22,7 @@ function StatsSection({ dashboard }) {
                 </div>
                 <div className="border border-slate-500 sm:p-3 p-2">
                     <FaRegEye
-                        className="text-purple-500 mb-2"
+                        className="text-[#FD7014] mb-2"
                         size={30}
                     />
                     <p>Total Views</p>
@@ -32,7 +32,7 @@ function StatsSection({ dashboard }) {
                 </div>
                 <div className="border border-slate-500 sm:p-3 p-2">
                     <RxAvatar
-                        className="text-purple-500 mb-2"
+                        className="text-[#FD7014] mb-2"
                         size={30}
                     />
                     <p>Total subscribers</p>
@@ -42,7 +42,7 @@ function StatsSection({ dashboard }) {
                 </div>
                 <div className="border border-slate-500 sm:p-3 p-2">
                     <FaRegHeart
-                        className="text-purple-500 mb-2"
+                        className="text-[#FD7014] mb-2"
                         size={30}
                     />
                     <p>Total likes</p>

@@ -90,15 +90,18 @@ export const deleteAVideo = createAsyncThunk("deleteAVideo", async(videoId) => {
     }
 });
 
-export const getVideoById = createAsyncThunk("getVideoById", async({videoId}) => {
-    try {
-        const response = await axiosInstance.get(`/video/v/${videoId}`);
-        return response.data.data;
-    } catch (error) {
-        toast.error(error?.response?.data?.error);
-        throw error;
+export const getVideoById = createAsyncThunk(
+    "getVideoById",
+    async ({ videoId }) => {
+        try {
+            const response = await axiosInstance.get(`/video/v/${videoId}`);
+            return response.data.data;
+        } catch (error) {
+            toast.error(error?.response?.data?.error);
+            throw error;
+        }
     }
-});
+);
 
 export const togglePublishStatus = createAsyncThunk("togglePublishStatus", async(videoId) => {
     try {

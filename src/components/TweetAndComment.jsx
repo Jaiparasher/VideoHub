@@ -24,7 +24,7 @@ function TweetAndComment({ tweet, comment, videoId }) {
         <>
             <form
                 onSubmit={handleSubmit(sendContent)}
-                className="sm:p-5 p-3 sm:max-w-4xl w-full relative"
+                className="sm:p-5 p-3 w-full relative"
             >
                 <textarea
                     placeholder={`${tweet ? "Write a tweet" : "Add a Comment"}`}
@@ -34,7 +34,7 @@ function TweetAndComment({ tweet, comment, videoId }) {
                 />
                 <Button
                     type="submit"
-                    className="bg-purple-500 px-2 py-1 text-black hover:scale-110 transition-all ease-in absolute sm:bottom-8 sm:right-8 bottom-8 right-4 text-xs sm:text-base"
+                    className="bg-[#FD7014] px-2 py-1 text-black hover:scale-110 transition-all ease-in absolute sm:bottom-8 sm:right-8 bottom-8 right-4 text-xs sm:text-base"
                 >
                     Send
                 </Button>

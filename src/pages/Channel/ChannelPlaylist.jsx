@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 function ChannelPlaylist() {
     const dispatch = useDispatch();
     const playlists = useSelector((state) => state.playlist?.playlists);
-    const authId = useSelector((state) => state.auth.userData?._id);
+    const authId = useSelector((state) => state.auth.userData?.data?._id);
     const userId = useSelector((state) => state.user.profileData?._id);
     const {
         register,
@@ -44,7 +44,7 @@ function ChannelPlaylist() {
                 {authId === userId && (
                     <div className="w-full flex justify-center mt-5">
                         <Button
-                            className="bg-purple-500 text-sm p-2"
+                            className="bg-[#FD7014] text-sm p-2"
                             onClick={() =>
                                 setOpenCreatePlaylist((prev) => !prev)
                             }
@@ -96,7 +96,7 @@ function ChannelPlaylist() {
                                     </span>
                                 )}
                                 <Button
-                                    className="bg-purple-500 text-sm p-2 w-full"
+                                    className="bg-[#FD7014] text-sm p-2 w-full"
                                     type="submit"
                                 >
                                     Create Playlist

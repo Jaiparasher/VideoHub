@@ -52,7 +52,7 @@ const TermsAndConditions = () => {
                     {isChecked && (
                         <Link
                             to="/"
-                            className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded"
+                            className="bg-[#FD7014] hover:bg-purple-600 text-white font-bold py-2 px-4 rounded"
                         >
                             Continue
                         </Link>

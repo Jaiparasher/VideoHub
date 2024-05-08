@@ -46,6 +46,7 @@ function VideoDetail() {
     return (
         <>
             <Navbar />
+            <div className="w-full">
             <Video
                 src={video?.videoFile?.url}
                 poster={video?.thumbnail?.url}
@@ -76,7 +77,7 @@ function VideoDetail() {
                 fetchMore={fetchMoreComments}
                 hasNextPage={hasNextPage}
             >
-                <div className="w-full sm:max-w-4xl">
+                <div className="w-full">
                     {comments?.map((comment) => (
                         <CommentList
                             key={comment?._id}
@@ -97,6 +98,7 @@ function VideoDetail() {
                     )}
                 </div>
             </InfiniteScroll>
+            </div>
         </>
     );
 }

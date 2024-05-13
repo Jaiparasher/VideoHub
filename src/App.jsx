@@ -23,7 +23,6 @@ import {
 import { EditPersonalInfo, ChangePassword, Layout } from "./components";
 
 function App() {
-    console.log(import.meta.env.VITE_base_url);
     const dispatch = useDispatch();
 
     useEffect(() => {

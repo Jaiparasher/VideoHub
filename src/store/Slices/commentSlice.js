@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
-import { BASE_URL } from "../../constants";
 
 const initialState = {
     loading: false,
@@ -51,7 +50,7 @@ export const deleteAComment = createAsyncThunk("deleteAComment", async (commentI
 export const getVideoComments = createAsyncThunk(
     "getVideoComments",
     async ({videoId, page, limit}) => {
-        const url = new URL(`${BASE_URL}/comment/${videoId}`);
+        const url = new URL(`${import.meta.env.VITE_base_url}/comment/${videoId}`);
         if(page) url.searchParams.set('page', page);
         if(limit) url.searchParams.set('limit', limit);
 

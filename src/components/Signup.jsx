@@ -51,27 +51,17 @@ function SignUp() {
                         onSubmit={handleSubmit(submit)}
                         className="space-y-4 p-2 text-sm sm:w-96 w-full"
                     >
-                        <div className="w-full relative h-28 bg-[#222222]">
-                            <div className="w-full h-full">
-                                <GetImagePreview
-                                    name="coverImage"
-                                    control={control}
-                                    className="w-full h-28 object-cover border-none border-slate-900"
-                                    cameraIcon
-                                />
-                                <div className="text-sm absolute right-2 bottom-2 hover:text-[#FD7014] cursor-default">
-                                    cover Image
-                                </div>
-                            </div>
-                            <div className="absolute left-2 bottom-2 rounded-full border-2">
-                                <GetImagePreview
-                                    name="avatar"
-                                    control={control}
-                                    className="object-cover rounded-full h-20 w-20 outline-none"
-                                    cameraIcon={true}
-                                    cameraSize={20}
-                                />
-                            </div>
+                        <div className="w-full flex justify-center ">
+            <div className="left-2 bottom-2 rounded-full border-2">
+              <GetImagePreview
+                name="avatar"
+                control={control}
+                className="object-cover rounded-full h-32 w-32 outline-none"
+                cameraIcon={true}
+                cameraSize={20}
+              />
+            </div>
+          </div>
 
                             {/* <label
                                 htmlFor="avatar"
@@ -104,7 +94,6 @@ function SignUp() {
                                     rules={{ required: "avatar is required" }}
                                 />
                             </label> */}
-                        </div>
                         {errors.avatar && (
                             <div className="text-red-500">
                                 {errors.avatar.message}

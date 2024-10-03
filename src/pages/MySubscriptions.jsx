@@ -19,21 +19,25 @@ function MySubscriptions() {
 
     return (
         <>
-            <div className="flex gap-2 p-2 text-white items-center bg-[#222222]">
+            <div className="flex gap-2 p-2 flex-col text-white items-center ">
+                <div className="bg-[#222222] flex justify-start items-center p-4  w-full h-20 border border-[#fd7014]">
+                    <h1 className="text-xl font-bold ">My Subscriptions</h1>
+                </div>
                 {subscriptions?.map((subscription) => (
                     
                     <div
-                        key={subscription?.subscribedChannel?._id}
-                        className="flex flex-col items-center overflow-x-scroll"
+                        key={subscription?.subscribedTo?._id}
+                        className="flex gap-2 items-center w-full overflow-x-scroll justify-start"
                     >
                         <Avatar
-                            src={subscription?.subscribedChannel?.avatar.url}
+                            src={subscription?.subscribedTo?.avatar.url}
                             channelName={
-                                subscription?.subscribedChannel?.username
+                                subscription?.subscribedTo?.username
                             }
+                            size={16}
                         />
-                        <h5 className="text-xs">
-                            {subscription?.subscribedChannel?.username}
+                        <h5 className="text-2xl">
+                            {subscription?.subscribedTo?.username}
                         </h5>
                     </div>
                 ))}

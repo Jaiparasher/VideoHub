@@ -46,11 +46,9 @@ export const toggleCommentLike = createAsyncThunk(
     }
 );
 
-export const getLikedVideos = createAsyncThunk(
-    "getLikedVideos",
-    async () => {
+export const getLikedVideos = createAsyncThunk("getLikedVideos",async () => {
         try {
-            const response = await axiosInstance.get('likes/videos');
+            const response = await axiosInstance.get('/likes/videos');
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -64,11 +62,18 @@ const likeSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getLikedVideos.pending, (state) => state.loading = true);
-        builder.addCase(getLikedVideos.fulfilled, (state, action) => {
-            state.loading = false;
-            state.likedVideos = action.payload;
-        })
+        builder
+            .addCase(getLikedVideos.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(getLikedVideos.fulfilled, (state, action) => {
+                state.loading = false;
+                state.likedVideos = action.payload;
+            })
+            .addCase(getLikedVideos.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            });
     }
 });
 

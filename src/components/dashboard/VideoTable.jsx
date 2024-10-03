@@ -3,6 +3,14 @@ import { ImBin, GrEdit } from "../../components/icons";
 import TogglePublish from "../TogglePublish";
 
 function VideoTable({ videos, setPopUp, setVideoDetails }) {
+    const formatDate = (isoDate) => {
+        const date = new Date(isoDate);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        }) + ' ' + date.toLocaleTimeString('en-US');
+    };
     
 
     return (
@@ -12,10 +20,7 @@ function VideoTable({ videos, setPopUp, setVideoDetails }) {
                     <thead>
                         <tr>
                             <th className="py-2 px-4 border-b border-slate-500">
-                                Toggle Publish
-                            </th>
-                            <th className="py-2 px-4 border-b border-slate-500">
-                                Status
+                                Video
                             </th>
                             <th className="py-2 px-4 border-b border-slate-500">
                                 Uploaded
@@ -33,34 +38,22 @@ function VideoTable({ videos, setPopUp, setVideoDetails }) {
                         {videos?.map((video) => (
                             <tr key={video?._id}>
                                 <td className="py-2 px-4 border-b border-slate-500">
-                                    <TogglePublish
-                                        isPublished={video?.isPublished}
-                                        videoId={video?._id}
+                                        <img
+                                        className="w-96"
+                                        src={video?.thumbnail.url}
+                                        alt={video?.title}
                                     />
-                                </td>
-                                <td className="py-2 px-4 border-b border-slate-500 ">
-                                    {video?.isPublished ? (
-                                        <span className="text-green-500 py-1 px-2 border border-green-500 rounded-full">
-                                            Published
-                                        </span>
-                                    ) : (
-                                        <span className="text-orange-500 py-1 px-2 border border-orange-500 rounded-full">
-                                            UnPublished
-                                        </span>
-                                    )}
                                 </td>
                                 <td className="py-2 px-4 border-b border-slate-500">
                                     {video?.title}
                                 </td>
                                 <td className="border-b border-slate-500">
                                     <span className="border rounded-lg outline-none px-2 bg-green-200 text-green-600">
-                                        {video?.likesCount} likes
+                                        {video?.views ?video?.views :0} views
                                     </span>
                                 </td>
                                 <td className="py-2 px-4 border-b border-slate-500">
-                                    {video?.createdAt?.day}/
-                                    {video?.createdAt?.month}/
-                                    {video?.createdAt?.year}
+                                    {formatDate(video.createdAt)}
                                 </td>
                                 <td className="py-2 border-b border-slate-500">
                                     <span className="flex gap-3 justify-start">

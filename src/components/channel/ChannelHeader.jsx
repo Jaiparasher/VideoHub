@@ -24,12 +24,13 @@ function ChannelHeader({
   const [localSubscribersCount, setLocalSubscribersCount] = useState(subscribersCount);
   const dispatch = useDispatch();
   const userProfile = useSelector((state) => state.user?.profileData?._id);
-  const user = useSelector((state) => state.auth?.userData?._id);
+  const user = useSelector((state) => state.auth?.userData?.data?._id);
+  
 
   useEffect(() => {
     setLocalSubscribersCount(subscribersCount);
     setLocalIsSubscribed(isSubscribed);
-}, [subscribersCount, isSubscribed]);
+}, [subscribersCount]);
 
   const handleSubscribe = () => {
     dispatch(toggleSubscription(channelId));
@@ -97,7 +98,7 @@ function ChannelHeader({
               </div>
             </div>
             {user == userProfile && !edit && (
-              <Link to={"/edit"}>
+              <Link to={"/edit/personalInfo"}>
                 <Button className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-[#FD7014]">
                   Edit
                 </Button>

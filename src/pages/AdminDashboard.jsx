@@ -16,9 +16,9 @@ import { deleteAVideo } from "../store/Slices/videoSlice";
 
 function AdminDashboard() {
     const username = useSelector((state) => state.auth.userData?.data?.username);
+    const userId = useSelector((state) => state.auth.userData?.data?._id);
     const dashboard = useSelector((state) => state.dashboard.channelStats);
     const videos = useSelector((state) => state.dashboard.channelVideos);
-    console.log(videos);
     const uploaded = useSelector((state) => state.video.uploaded);
     const publishToggled = useSelector((state) => state.video.publishToggled);
     const deleting = useSelector((state) => state.video.loading);
@@ -44,8 +44,8 @@ function AdminDashboard() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getChannelVideos());
-    }, [dispatch, uploaded, publishToggled, deleting]);
+        dispatch(getChannelVideos(userId));
+    }, [dispatch, uploaded, publishToggled, deleting,userId]);
 
     window.scrollTo(0, 0);
 

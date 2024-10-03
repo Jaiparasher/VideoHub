@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Avatar({ src, channelName }) {
+function Avatar({ src, channelName ,size=8 }) {
     const navigate = useNavigate();
 
     const handleAvatarClick = (e) => {
@@ -13,7 +13,7 @@ function Avatar({ src, channelName }) {
             <img
                 src={src}
                 alt="avatar"
-                className="w-8 h-8 rounded-full object-cover"
+                className={`w-${size} h-${size} rounded-full object-cover`}
                 onClick={handleAvatarClick}
             />
         </>

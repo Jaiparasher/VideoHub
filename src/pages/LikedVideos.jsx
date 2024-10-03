@@ -6,16 +6,16 @@ import { Container, NoVideosFound, VideoList } from "../components";
 import { makeVideosNull } from "../store/Slices/videoSlice";
 
 function LikedVideos() {
-    const dispatch = useDispatch();
+    
     const likedVideos = useSelector((state) => state.like?.likedVideos);
-    console.log(likedVideos);
     const loading = useSelector((state) => state.like.loading);
+
+    const dispatch = useDispatch();
     window.scrollTo(0, 0);
 
     useEffect(() => {
         dispatch(getLikedVideos());
-
-        return () => dispatch(makeVideosNull())
+        
     }, [dispatch]);
 
     if (loading) {
@@ -31,17 +31,15 @@ function LikedVideos() {
                 <div className="grid max-h-screen overflow-y-scroll lg:grid-cols-3 sm:grid-cols-2 text-white mb-20 sm:mb-0">
                     {likedVideos?.map((video) => (
                         <VideoList
-                            key={video.likedVideo._id}
-                            avatar={video.likedVideo.ownerDetails?.avatar?.url}
-                            duration={video.likedVideo.duration}
-                            title={video.likedVideo.title}
-                            thumbnail={video.likedVideo.thumbnail?.url}
-                            createdAt={video.likedVideo.createdAt}
-                            views={video.likedVideo.views}
-                            channelName={
-                                video.likedVideo.ownerDetails?.username
-                            }
-                            videoId={video.likedVideo._id}
+                            key={video._id}
+                            avatar={video.video?.ownerDetails?.avatar?.url}
+                            duration={video.video?.duration}
+                            title={video.video?.title}
+                            thumbnail={video.video?.thumbnail?.url}
+                            createdAt={video.video?.createdAt}
+                            views={video.video?.views}
+                            channelName={video.video?.ownerDetails?.username}
+                            videoId={video.video?._id}
                         />
                     ))}
                 </div>

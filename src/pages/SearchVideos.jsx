@@ -8,13 +8,15 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { useParams, useSearchParams } from "react-router-dom";
 
 function SearchVideos() {
-    console.log("object");
     const loading = useSelector((state) => state.video?.loading);
     const videos = useSelector((state) => state.video?.videos);
     const dispatch = useDispatch();
     const { query } = useParams();
     const [filterOpen, setFilterOpen] = useState(false);
     const [searchParams, setSearchParms] = useSearchParams();
+
+    console.log(videos);
+    
 
     useEffect(() => {
         const sortType = searchParams.get("sortType");
@@ -34,7 +36,7 @@ function SearchVideos() {
         setSearchParms({ sortBy: newSortBy, sortType: newSortType });
     };
 
-    if (videos?.totalDocs === 0) {
+    if (videos?.docs.length === 0) {
         return <NoVideosFound text={"Try searching something else"} />;
     }
 

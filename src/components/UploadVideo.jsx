@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Input2, UploadingVideo } from "./index";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { publishAvideo } from "../store/Slices/videoSlice";
+import { publishAVideo } from "../store/Slices/videoSlice";
 import { IoCloseCircleOutline } from "./icons";
 import GetImagePreview from "./GetImagePreview";
 
@@ -21,7 +21,7 @@ function UploadVideo({ setUploadVideoPopup }) {
 
     const publishVideo = async (data) => {
         setVideoSize(Math.floor(data.videoFile[0].size / (1024 * 1024)));
-        await dispatch(publishAvideo(data));
+        await dispatch(publishAVideo(data));
     };
 
     if (uploading) {

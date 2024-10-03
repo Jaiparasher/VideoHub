@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const initialState = {
     loading: false,
@@ -30,7 +31,9 @@ export const getAllVideos = createAsyncThunk(
             }
 
             const response = await axiosInstance.get(url);
-
+            console.log();
+            
+            
             return response.data.data;
         } catch (error) {
             toast.error(error?.response?.data?.error);
@@ -39,22 +42,49 @@ export const getAllVideos = createAsyncThunk(
     }
 );
 
-export const publishAvideo = createAsyncThunk("publishAvideo", async(data) => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("videoFile", data.videoFile[0]);
-    formData.append("thumbnail", data.thumbnail[0]);
+export const publishAVideo = createAsyncThunk("publishAVideo", async (data) => {
+
+      const videoFormData = new FormData();
+      videoFormData.append("file", data.videoFile[0]);
+      videoFormData.append("upload_preset", import.meta.env.VITE_preset_key);
+
+      const videoUploadRes = await axios.post(
+        `https://api.cloudinary.com/v1_1/${
+          import.meta.env.VITE_cloud_name
+        }/video/upload`,
+        videoFormData
+      );
+    
+      const thumbnailFormData = new FormData();
+      thumbnailFormData.append("file", data.thumbnail[0]);
+      thumbnailFormData.append("upload_preset", import.meta.env.VITE_preset_key);
+
+      const thumbnailUploadRes = await axios.post(
+        `https://api.cloudinary.com/v1_1/${
+          import.meta.env.VITE_cloud_name
+        }/image/upload`,
+        thumbnailFormData
+      );
+    
+      const result = {
+        title: data.title,
+        description: data.description,
+        videoFile: videoUploadRes.data,
+        thumbnail: thumbnailUploadRes.data
+      }
 
     try {
-        const response = await axiosInstance.post('/video', formData);
+        const response = await axiosInstance.post('/video', result);
+
         toast.success(response?.data?.message);
         return response.data.data;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        console.error("Upload error:", error);
+        toast.error(error?.response?.data?.error || "Something went wrong.");
         throw error;
     }
 });
+
 
 export const updateAVideo = createAsyncThunk(
     "updateAVideo",
@@ -134,11 +164,11 @@ const videoSlice = createSlice({
             state.videos.docs = [...state.videos.docs, ...action.payload.docs];
             state.videos.hasNextPage = action.payload.hasNextPage;
         });
-        builder.addCase(publishAvideo.pending, (state) => {
+        builder.addCase(publishAVideo.pending, (state) => {
             state.loading = true;
             state.uploading = true;
         });
-        builder.addCase(publishAvideo.fulfilled, (state) => {
+        builder.addCase(publishAVideo.fulfilled, (state) => {
             state.uploaded = true;
             state.uploading = false;
         });

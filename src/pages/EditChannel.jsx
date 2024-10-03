@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 function EditChannel() {
-    const channel = useSelector((state) => state.auth?.userData);
+    const channel = useSelector((state) => state.auth?.userData?.data);
     const loading = useSelector((state) => state.auth?.loading);
     window.scrollTo(0, 0);
 

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosInstance";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const initialState = {
     loading: false,
@@ -11,25 +12,54 @@ const initialState = {
 };
 
 export const createAccount = createAsyncThunk("register", async (data) => {
-    const formData = new FormData();
-    formData.append("avatar", data.avatar[0]);
-    formData.append("username", data.username);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("fullName", data.fullName);
-    if (data.coverImage) {
-        formData.append("coverImage", data.coverImage[0])
-    }
     try {
-        const response = await axiosInstance.post("/users/register", formData);
-        console.log(response.data);
+        // Upload avatar to Cloudinary
+        const avatarFormData = new FormData();
+        avatarFormData.append("file", data.avatar[0]);
+        avatarFormData.append("upload_preset", import.meta.env.VITE_preset_key);
+
+        const avatarUploadRes = await axios.post(
+            `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_cloud_name}/image/upload`,
+            avatarFormData
+        );
+
+        // If a cover image is provided, upload it to Cloudinary
+        let coverImageUploadRes;
+        if (data.coverImage) {
+            const coverImageFormData = new FormData();
+            coverImageFormData.append("file", data.coverImage[0]);
+            coverImageFormData.append("upload_preset", import.meta.env.VITE_preset_key);
+
+            coverImageUploadRes = await axios.post(
+                `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_cloud_name}/image/upload`,
+                coverImageFormData
+            );
+        }
+
+        // Prepare the result object containing all form data and the Cloudinary URLs
+        const result = {
+            username: data.username,
+            email: data.email,
+            password: data.password,
+            fullName: data.fullName,
+            avatar: avatarUploadRes.data,  // Avatar Cloudinary response
+            coverImage: coverImageUploadRes ? coverImageUploadRes.data : null,  // Cover Image Cloudinary response (if exists)
+        };
+
+        // Send the result data to your backend
+        const response = await axiosInstance.post("/users/register", result, {
+            headers: { "Content-Type": 'application/json' }
+        });
+
         toast.success("Registered successfully!!!");
         return response.data;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        console.error("Registration error:", error);
+        toast.error(error?.response?.data?.error || "Something went wrong.");
         throw error;
     }
 });
+
 
 export const userLogin = createAsyncThunk("login", async (data) => {
     try {

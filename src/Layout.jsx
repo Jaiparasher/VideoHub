@@ -11,7 +11,7 @@ function Layout() {
                 <div className="">
                 <Sidebar />
                 </div>
-                <div className="sm:flex-1 sm:ml-16 md:ml-44 lg:ml-56">
+                <div className="sm:flex-1 h-auto sm:ml-16 md:ml-44 lg:ml-56">
                     <Outlet />
                 </div>
             </div>

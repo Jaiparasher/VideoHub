@@ -81,48 +81,44 @@ function Sidebar() {
   return (
     <>
       <div className="sm:block hidden">
-        <div className="text-white h-[90vh] sticky lg:w-56 md:w-44 w-16 sm:p-3 p-2 border-slate-600 border-r  flex flex-col justify-between">
-          <div className="flex flex-col gap-4 mt-5">
-            {sidebarTopItems.map((item) => (
-              <NavLink
-                to={item.url}
-                key={item.title}
-                className={({ isActive }) =>
-                  isActive ? "bg-[#FD7014] rounded" : ""
-                }
-              >
-                <div className="flex items-center gap-2 justify-center sm:justify-start rounded hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600">
-                  {item.icon}
-                  <span className="text-base hidden md:block">
-                    {item.title}
-                  </span>
-                </div>
-              </NavLink>
-            ))}
+  <div className="text-white h-[90vh] fixed bottom-0 left-0 lg:w-56 md:w-44 w-16 sm:p-3 p-2 border-slate-600 border-r flex flex-col justify-between overflow-hidden">
+    <div className="flex flex-col gap-4 mt-5">
+      {sidebarTopItems.map((item) => (
+        <NavLink
+          to={item.url}
+          key={item.title}
+          className={({ isActive }) =>
+            isActive ? "bg-[#FD7014] rounded" : ""
+          }
+        >
+          <div className="flex items-center gap-2 justify-center sm:justify-start rounded hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600">
+            {item.icon}
+            <span className="text-base hidden md:block">{item.title}</span>
           </div>
+        </NavLink>
+      ))}
+    </div>
 
-          <div className="space-y-4 mb-5">
-          {username && (
-                            <div
-                                className="flex items-center gap-2 justify-center sm:justify-start hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600"
-                                onClick={() => logout()}
-                            >
-                                <IoMdLogOut size={25} />
-                                <span className="text-base hidden md:block">
-                                    Logout
-                                </span>
-                            </div>
-                        )}
-                        <Link to="/edit/personalInfo">
-            <div className="flex items-center gap-2 justify-center sm:justify-start rounded hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600">
-              <CiSettings size={25} />
-
-              <span className="text-base hidden md:block">Settings</span>
-            </div>
-            </Link>
-          </div>
+    <div className="space-y-4 mb-5">
+      {username && (
+        <div
+          className="flex items-center mb-3 gap-2 justify-center sm:justify-start hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600"
+          onClick={() => logout()}
+        >
+          <IoMdLogOut size={25} />
+          <span className="text-base hidden md:block">Logout</span>
         </div>
-      </div>
+      )}
+      <Link to="/edit/personalInfo">
+        <div className="flex items-center gap-2 justify-center sm:justify-start rounded hover:bg-[#FD7014] cursor-pointer py-1 px-2 border border-slate-600">
+          <CiSettings size={25} />
+          <span className="text-base hidden md:block">Settings</span>
+        </div>
+      </Link>
+    </div>
+  </div>
+</div>
+
 
       {/* for mobile sidebar is bottom bar*/}
       <div className="border-t-2  text-white h-16 sm:hidden z-20 p-1 w-full flex justify-around fixed bottom-0 bg-[#0E0F0F]">

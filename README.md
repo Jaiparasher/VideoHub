@@ -30,15 +30,10 @@ VideoHub App is a dynamic video hosting platform developed to provide users with
    ```
 2. Install dependencies:
    ```bash
-   cd backend && npm install
-   cd frontend && npm install
+   npm install
    ```
 3. Setup `.env` files for both backend and frontend with your respective environment variables (MongoDB URI, Cloudinary credentials, JWT secret, etc.).
-4. Run the backend:
-   ```bash
-   npm run dev
-   ```
-5. Run the frontend:
+4. Run the frontend:
    ```bash
    npm run start
    ```

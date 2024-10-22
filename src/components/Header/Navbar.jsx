@@ -100,7 +100,7 @@ function Navbar() {
 
         {/* Side panel for smaller screens */}
         {toggleMenu && (
-          <div className="fixed right-0 top-0 bottom-0 text-white flex flex-col border-l h-screen  w-5/6 bg-[#393E46] sm:hidden rounded-lg outline-none">
+          <div className="fixed right-0 top-0 bottom-0 text-white flex flex-col border-l max-h-screen w-5/6 bg-[#393E46] sm:hidden rounded-lg outline-none">
             <div className="w-full border-b h-20 flex items-center mb-2 justify-between px-3">
               <div className="flex items-center gap-2">
                 <Logo />
